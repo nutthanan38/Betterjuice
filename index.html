@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Better Juice — Cold-Press Juice & Smoothies ที่ทำให้ทุกวันของคุณดีขึ้น สดจากธรรมชาติ ไม่มีน้ำตาลเพิ่ม เริ่มวันใหม่ด้วยพลังงานที่แท้จริง" />
+  <meta name="keywords" content="cold press juice, smoothie, healthy drink, Bangkok, น้ำผลไม้สด, สมูทตี้, สุขภาพ, ออร์แกนิก" />
+  <meta property="og:title" content="Better Juice — Start Better. Feel Better." />
+  <meta property="og:description" content="Cold-Press & Smoothies ที่ทำให้ทุกวันของคุณดีขึ้น" />
+  <meta property="og:type" content="website" />
+  <title>Better Juice — Start Better. Feel Better.</title>
+
+  <!-- Brand Fonts -->
+  <style>
+    /* ── Gelica — EN Display Headlines (Latin only) ── */
+    @font-face {
+      font-family: 'Gelica';
+      src: url('fonts/fonnts.com-Gelica-Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'Gelica';
+      src: url('fonts/fonnts.com-Gelica-Black.otf') format('opentype');
+      font-weight: 900; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'Gelica';
+      src: url('fonts/fonnts.com-Gelica-SemiBold.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    /* ── KitSans — EN Sub-headlines, UI, cards (Latin only) ── */
+    @font-face {
+      font-family: 'KitSans';
+      src: url('fonts/fonnts.com-KitSans_Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'KitSans';
+      src: url('fonts/fonnts.com-KitSans_Bold_Italic.otf') format('opentype');
+      font-weight: 700; font-style: italic; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'KitSans';
+      src: url('fonts/fonnts.com-KitSans_Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'KitSans';
+      src: url('fonts/fonnts.com-KitSans_Medium.otf') format('opentype');
+      font-weight: 500; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    @font-face {
+      font-family: 'KitSans';
+      src: url('fonts/fonnts.com-KitSans_SemiBold.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: swap;
+      unicode-range: U+0020-U+007E, U+00A0-U+024F, U+2000-U+206F, U+2018-U+201F;
+    }
+    /* ── LINE Seed Sans TH — Thai + Latin fallback ── */
+    @font-face {
+      font-family: 'LINESeedSansTH';
+      src: url('fonts/LINESeedSansTH_Rg.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'LINESeedSansTH';
+      src: url('fonts/LINESeedSansTH.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+  </style>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #FF9C31;
+      --orange-dark: #E08010;
+      --green:       #6DBC74;
+      --green-light: #E8F5E0;
+      --white:       #FAFAF7;   /* off-white — warm barely-there tint */
+      --off-white:   #F4F4F0;
+      --light-gray:  #EEEEEA;
+      --mid-gray:    #DDDDD8;
+      --text-dark:   #111111;
+      --text-mid:    #555550;
+      --text-light:  #999990;
+      --dark-bg:     #111111;
+      /* card color strips */
+      --amber:    #FF9C31; --forest:  #2A6040; --red:      #E04030;
+      --burgundy: #7A2040; --dark-green:#1E4A30; --mint:  #6DBC74;
+      --olive:    #8A9A30; --emerald: #2A7A4A; --ruby:    #8A1A30;
+      --pink:     #E87090; --rose:    #C84060; --lavender:#8A60C8;
+      --purple:   #6A40A8; --tropical:#40A870; --sky:     #4090D0;
+      --coral:    #E86050; --warm:    #D87040; --berry:   #A03060;
+      --teal:     #3A8A88; --watermelon:#E84060; --cacao: #6A3820;
+      --cool:     #50A0C0; --orange-strip:#FF7820;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'LINESeedSansTH', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 68px;
+      background: #6DBC74;
+      border-bottom: none;
+      transition: all 0.3s ease;
+    }
+
+    /* ─── NAV LOGO crop ─── */
+    .logo-crop {
+      height: 38px;
+      overflow: hidden;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .logo-crop img {
+      height: 220px;
+      width: auto;
+      margin-top: -91px;
+      display: block;
+      mix-blend-mode: screen;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'KitSans', 'LINESeedSansTH', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      background: #111 !important;
+      color: var(--white) !important;
+      padding: 9px 22px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
+    }
+
+    .nav-cta:hover {
+      background: #333 !important;
+      color: var(--white) !important;
+    }
+
+    /* ─── CONTAINER ─── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 56px 80px;
+      background: var(--white);
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-mascot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-mascot img {
+      width: 100%;
+      max-width: 400px;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      background: var(--light-gray);
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1.04;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      letter-spacing: -0.025em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      max-width: 460px;
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─── HERO LOGO image ─── */
+    .hero-logo { margin-bottom: 40px; }
+
+    .bj-logo-img--hero {
+      height: 140px;
+      width: auto;
+      display: block;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-dark);
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: 1.5px solid var(--mid-gray);
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-dark);
+      background: var(--light-gray);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .stat-item { text-align: left; }
+
+    .stat-number {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text-dark);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section {
+      padding: 100px 56px;
+      text-align: center;
+    }
+
+    section > * {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-label {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text-dark);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      max-width: 700px;
+    }
+
+    .section-desc {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      max-width: 480px;
+      line-height: 1.85;
+      margin-bottom: 56px;
+    }
+
+    /* ─── MASCOT DECORATIVE ─── */
+    .mascot-deco {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .mascot-deco img {
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.08));
+    }
+
+    .mascot-float-sm {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .mascot-float-sm:nth-child(2) { animation-delay: -1.5s; }
+    .mascot-float-sm:nth-child(3) { animation-delay: -3s; }
+
+    .mascot-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .mascot-row img {
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .mascot-row img:nth-child(2) { animation-delay: -2s; }
+    .mascot-row img:nth-child(3) { animation-delay: -1s; }
+
+    /* ─── AFFIRMATION BANNER ─── */
+    .affirmation-banner {
+      background: var(--orange);
+      color: var(--white);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .affirmation-track {
+      display: inline-flex;
+      gap: 48px;
+      animation: marquee 30s linear infinite;
+    }
+
+    .affirmation-track span {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-style: normal;
+      letter-spacing: 0.02em;
+    }
+
+    .affirmation-track .dot {
+      color: rgba(255,255,255,0.5);
+      font-style: normal;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── WHY SECTION ─── */
+    .why-section { background: var(--dark-bg); }
+    .why-section .section-label { color: rgba(255,255,255,0.4); }
+    .why-section .section-title { color: var(--white); }
+    .why-section .section-title em { color: var(--orange); }
+    .why-section .section-desc { color: rgba(255,255,255,0.55); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .why-card {
+      padding: 36px 32px;
+      background: var(--dark-bg);
+      transition: background 0.25s ease;
+    }
+
+    .why-card:hover { background: #1a1a1a; }
+
+    .why-icon { font-size: 1.6rem; margin-bottom: 20px; }
+
+    .why-card h3 {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--white) !important;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .why-card p {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5) !important;
+      line-height: 1.8;
+    }
+
+    /* ─── MENU SECTIONS ─── */
+    .cold-press-section { background: var(--white); }
+    .smoothies-section  { background: var(--off-white); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .menu-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--mid-gray);
+      transition: all 0.25s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      border-color: transparent;
+    }
+
+    .card-color-strip { height: 4px; width: 100%; }
+
+    .card-body { padding: 24px; }
+
+    .card-number {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .card-name {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text-dark);
+      line-height: 1.05;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-th {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      margin-bottom: 12px;
+    }
+
+    .card-tagline {
+      font-family: 'KitSans', 'Playfair Display', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--orange);
+      margin-bottom: 16px;
+      line-height: 1.45;
+    }
+
+    .card-fruits { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .fruit-tag {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      background: var(--light-gray);
+      color: var(--text-mid);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ─── CARD IMAGE ─── */
+    .card-image {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--off-white);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      transition: transform 0.35s ease;
+      mix-blend-mode: multiply;
+    }
+
+    .menu-card:hover .card-image img { transform: scale(1.04); }
+
+    /* ─── AFFIRMATION SECTION ─── */
+    .affirmation-section {
+      background: var(--dark-bg);
+      text-align: center;
+      padding: 120px 56px;
+    }
+
+    .affirmation-section .section-label { color: rgba(255,255,255,0.35); }
+
+    .affirmation-section .section-title {
+      font-family: 'Gelica', 'KitSans', serif;
+      color: var(--white);
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      max-width: 760px;
+      margin: 0 auto 20px;
+      font-style: normal;
+    }
+
+    .affirmation-section .section-title em { color: var(--orange); }
+
+    .affirmation-section p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto 52px;
+      line-height: 1.8;
+    }
+
+    .affirmation-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .affirmation-pill {
+      font-family: 'KitSans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-style: normal;
+      color: rgba(255,255,255,0.7);
+      padding: 9px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .affirmation-pill:hover {
+      background: rgba(255,156,49,0.15);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ─── PROCESS ─── */
+    .process-section { background: var(--off-white); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mid-gray);
+      font-size: 1.2rem;
+    }
+
+    .step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--white);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 18px;
+      border: 1px solid var(--mid-gray);
+    }
+
+    .process-step h4 {
+      font-family: 'Gelica', 'KitSans', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .process-step p {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 400;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--white);
+      text-align: center;
+      padding: 120px 56px;
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .cta-section .section-title { margin-bottom: 12px; }
+    .cta-section .section-title em { color: var(--orange); }
+
+    .cta-section p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark-bg);
+      color: rgba(255,255,255,0.5);
+      padding: 64px 56px 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .bj-logo { display: inline-flex; margin-bottom: 20px; }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      max-width: 280px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-col h4 {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+
+    .footer-col ul a {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-mascot { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .hero { padding: 100px 24px 64px; }
+      .hero-stats { gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .process-step:not(:last-child)::after { display: none; }
+      footer { padding: 52px 24px 28px; }
+      .mascot-row { gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.8rem; }
+      .btn-primary, .btn-secondary { padding: 13px 22px; font-size: 0.84rem; }
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ─── LOGO COMPONENT ─── */
+    .bj-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    /* Logo image */
+    .bj-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .bj-logo-img--hero {
+      height: 120px;
+      width: auto;
+    }
+
+    /* The cup icon SVG */
+    .bj-logo-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .bj-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .bj-logo-better {
+      font-family: 'KitSans', 'Playfair Display', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+    }
+
+    .bj-logo-juice {
+      font-family: 'KitSans', 'Playfair Display', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    /* Light logo variant (for dark backgrounds) */
+    .bj-logo.light .bj-logo-better,
+    .bj-logo.light .bj-logo-juice {
+      color: var(--cream);
+    }
+
+    /* Hero logo — bigger */
+    .hero-logo {
+      margin-bottom: 32px;
+    }
+    .hero-logo .bj-logo-icon { width: 56px; height: 56px; }
+    .hero-logo .bj-logo-better { font-size: 1rem; }
+    .hero-logo .bj-logo-juice { font-size: 2rem; }
+  </style>
+</head>
+
+<body>
+
+<!-- ─── SKIP NAV (Accessibility) ─── -->
+<a href="#main" style="position:absolute;top:-40px;left:0;background:var(--blue-dark);color:var(--cream);padding:8px 16px;font-size:0.85rem;border-radius:0 0 8px 0;z-index:999;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">ข้ามไปเนื้อหาหลัก</a>
+
+<!-- ─── NAV ─── -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="bj-logo" aria-label="Better Juice Home">
+    <div class="logo-crop">
+      <img src="images/250904_wk_Better Juice_File logo.ai (2).png" alt="Better Juice">
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#cold-press">Cold Press</a></li>
+    <li><a href="#smoothies">Smoothies</a></li>
+    <li><a href="#why">เกี่ยวกับเรา</a></li>
+    <li><a href="#order" class="nav-cta">สั่งเลย</a></li>
+  </ul>
+</nav>
+
+<!-- ─── MAIN ─── -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-inner">
+      <div class="hero-content">
+          <div class="hero-badge">🌿 Cold-Press · Smoothies · No Sugar Added</div>
+        <h1>Better Day<br><em>Starts Here.</em></h1>
+        <p class="hero-sub">วันที่ดีกว่า เริ่มจากแก้วนี้</p>
+        <p class="hero-desc">
+          เราไม่ได้แค่ขายน้ำ — เราขายความรู้สึกที่ดีขึ้น
+          ทุกเมนูถูกออกแบบให้ตรงกับสิ่งที่คุณต้องการในวันนั้น
+          ไม่ว่าจะเป็นพลังงาน ความใส หรือแค่รู้สึกดี
+        </p>
+        <div class="hero-actions">
+          <a href="#cold-press" class="btn-primary" aria-label="ดู Cold Press Juice">🍏 Cold Press Juice</a>
+          <a href="#smoothies" class="btn-secondary" aria-label="ดู Smoothies">🥤 Smoothies</a>
+        </div>
+        <div class="hero-stats" role="list" aria-label="Brand stats">
+          <div class="stat-item" role="listitem">
+            <div class="stat-number">23</div>
+            <div class="stat-label">เมนู</div>
+          </div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">ผลไม้สด</div>
+          </div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number">0</div>
+            <div class="stat-label">น้ำตาลเพิ่ม</div>
+          </div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">วันดีๆ</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Mascot -->
+      <div class="hero-mascot" aria-hidden="true">
+        <img src="images/Better Juice_Mascot_Set2_3.png" alt="" width="400">
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFIRMATION TICKER -->
+  <div class="affirmation-banner" aria-hidden="true">
+    <div class="affirmation-track">
+      <span>RISE UP</span><span class="dot">·</span>
+      <span>CLEAN SLATE</span><span class="dot">·</span>
+      <span>GOOD VIBES</span><span class="dot">·</span>
+      <span>POWER SURGE</span><span class="dot">·</span>
+      <span>THINK SHARP</span><span class="dot">·</span>
+      <span>FRESH RESET</span><span class="dot">·</span>
+      <span>PURE JOY</span><span class="dot">·</span>
+      <span>GLOW UP</span><span class="dot">·</span>
+      <span>FEEL ALIVE</span><span class="dot">·</span>
+      <span>I FEEL GOOD</span><span class="dot">·</span>
+      <span>RIDE HIGH</span><span class="dot">·</span>
+      <span>AT MY BEST</span><span class="dot">·</span>
+      <span>FLOW STATE</span><span class="dot">·</span>
+      <span>STAY SUNNY</span><span class="dot">·</span>
+      <span>GROW STRONG</span><span class="dot">·</span>
+      <span>ISLAND MODE</span><span class="dot">·</span>
+      <span>SWEET LIFE</span><span class="dot">·</span>
+      <span>COOL WAVE</span><span class="dot">·</span>
+      <!-- Repeat for seamless loop -->
+      <span>RISE UP</span><span class="dot">·</span>
+      <span>CLEAN SLATE</span><span class="dot">·</span>
+      <span>GOOD VIBES</span><span class="dot">·</span>
+      <span>POWER SURGE</span><span class="dot">·</span>
+      <span>THINK SHARP</span><span class="dot">·</span>
+      <span>FRESH RESET</span><span class="dot">·</span>
+      <span>PURE JOY</span><span class="dot">·</span>
+      <span>GLOW UP</span><span class="dot">·</span>
+      <span>FEEL ALIVE</span><span class="dot">·</span>
+      <span>I FEEL GOOD</span><span class="dot">·</span>
+      <span>RIDE HIGH</span><span class="dot">·</span>
+      <span>AT MY BEST</span><span class="dot">·</span>
+      <span>FLOW STATE</span><span class="dot">·</span>
+      <span>STAY SUNNY</span><span class="dot">·</span>
+      <span>GROW STRONG</span><span class="dot">·</span>
+      <span>ISLAND MODE</span><span class="dot">·</span>
+      <span>SWEET LIFE</span><span class="dot">·</span>
+      <span>COOL WAVE</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- WHY BETTER JUICE -->
+  <section class="why-section" id="why" aria-labelledby="why-title">
+    <!-- Mascot pair: tired → happy -->
+    <div class="mascot-row" aria-hidden="true">
+      <img src="images/Better Juice_Mascot_Set1_1.png" alt="" width="110" style="animation-delay:0s;">
+      <img src="images/Better Juice_Mascot_Set2_5.png" alt="" width="130" style="animation-delay:-2s;">
+      <img src="images/Better Juice_Mascot_Set2_1.png" alt="" width="100" style="animation-delay:-1s;">
+    </div>
+    <div class="section-label">ทำไมต้อง Better Juice</div>
+    <h2 class="section-title" id="why-title">เราเชื่อว่า<br><em style="font-style:normal;color:var(--orange)">ทุกวันดีขึ้นได้</em></h2>
+    <p class="section-desc">สุขภาพที่ดีไม่ต้องซับซ้อน แค่เลือกดื่มสิ่งที่ดีให้ร่างกาย ทุกแก้วของเราทำจากผลไม้แท้ ไม่ปรุงแต่ง เพื่อให้คุณรู้สึกดีจากข้างใน</p>
+    <div class="why-grid reveal" role="list">
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">🌿</div>
+        <h3>Cold-Press คือ</h3>
+        <p>สกัดด้วยแรงดันเย็น ไม่มีความร้อน วิตามินและ enzyme อยู่ครบ ร่างกายได้รับสารอาหารมากกว่า 3 เท่า</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">🚫</div>
+        <h3>ไม่มีน้ำตาลเพิ่ม</h3>
+        <p>ความหวานทั้งหมดมาจากผลไม้แท้ ไม่มีน้ำตาลทราย ไม่มี syrup ไม่มีสี — แค่ธรรมชาติล้วนๆ</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">💪</div>
+        <h3>ออกแบบมาเพื่อคุณ</h3>
+        <p>ทุกเมนูถูก formulate มาเพื่อแก้ปัญหาชีวิตจริง ไม่ว่าจะเหนื่อย เครียด หรืออยากเริ่มใหม่</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">✨</div>
+        <h3>Affirmation ในแก้ว</h3>
+        <p>ชื่อเมนูคือสิ่งที่คุณบอกกับตัวเองในวันนั้น RISE UP, FEEL ALIVE, YOU DESERVE THIS — เพราะคุณทำได้</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- COLD PRESS -->
+  <section class="cold-press-section" id="cold-press" aria-labelledby="coldpress-title">
+    <div class="section-label">🍏 Cold Press Juice</div>
+    <h2 class="section-title" id="coldpress-title">สกัดเย็น<br>ให้พลังงานแท้</h2>
+    <p class="section-desc">ผักและผลไม้สดสกัดด้วยกระบวนการ Cold-Press รักษาวิตามินและ enzyme ให้ครบ ร่างกายดูดซึมได้ทันที</p>
+
+    <div class="menu-grid" role="list">
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Rise Up">
+        <div class="card-image">
+          <img src="images/01-RISE%20UP.png" alt="RISE UP" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip amber" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#01 · Cold Press</div>
+          <h3 class="card-name">RISE UP</h3>
+          <p class="card-th">วันนี้ดีขึ้น เริ่มจากแก้วนี้</p>
+          <p class="card-tagline">"The day's better when you start it right."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍎 Red Apple</span>
+            <span class="fruit-tag">🥕 Carrot</span>
+            <span class="fruit-tag">🌿 Ginger</span>
+            <span class="fruit-tag">🟢 Lime</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Clean Slate">
+        <div class="card-image">
+          <img src="images/02-%20CLEAN%20SLATE.png" alt="CLEAN SLATE" loading="lazy"
+               onerror="this.src='images/02-CLEAN%20SLATE.png';this.onerror=()=>this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip forest" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#02 · Cold Press</div>
+          <h3 class="card-name">CLEAN SLATE</h3>
+          <p class="card-th">ปล่อยทิ้งสิ่งเก่า เริ่มต้นใหม่</p>
+          <p class="card-tagline">"Let go of yesterday. Start fresh."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🥒 Cucumber</span>
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🥬 Kale</span>
+            <span class="fruit-tag">🌱 Celery</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Good Vibes">
+        <div class="card-image">
+          <img src="images/03-GOOD%20VIBES.png" alt="GOOD VIBES" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip orange" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#03 · Cold Press</div>
+          <h3 class="card-name">GOOD VIBES</h3>
+          <p class="card-th">แค่ดื่มนี้ วันนี้ก็ดีแล้ว</p>
+          <p class="card-tagline">"Vitamin C for your soul."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍊 Orange</span>
+            <span class="fruit-tag">🌸 Passion Fruit</span>
+            <span class="fruit-tag">🥕 Carrot</span>
+            <span class="fruit-tag">🌱 Celery</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Escape">
+        <div class="card-image">
+          <img src="images/04-ESCAPE.png" alt="ESCAPE" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip red" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#04 · Cold Press</div>
+          <h3 class="card-name">ESCAPE</h3>
+          <p class="card-th">พักใจ เหมือนได้พักร้อน</p>
+          <p class="card-tagline">"Your 5-minute tropical vacation."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍉 Watermelon</span>
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🌸 Passion Fruit</span>
+            <span class="fruit-tag">🟢 Lime</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Power Surge">
+        <div class="card-image">
+          <img src="images/05-POWER%20SURGE.png" alt="POWER SURGE" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip burgundy" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#05 · Cold Press</div>
+          <h3 class="card-name">POWER SURGE</h3>
+          <p class="card-th">แข็งแกร่งกว่าเมื่อวาน</p>
+          <p class="card-tagline">"Strong body, stronger you."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🫀 Beetroot</span>
+            <span class="fruit-tag">🍎 Apple</span>
+            <span class="fruit-tag">🥕 Carrot</span>
+            <span class="fruit-tag">🍋 Lemon</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Think Sharp">
+        <div class="card-image">
+          <img src="images/06-THINK%20SHARP.png" alt="THINK SHARP" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip dark-green" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#06 · Cold Press</div>
+          <h3 class="card-name">THINK SHARP</h3>
+          <p class="card-th">สมองใส คิดชัด ทำได้</p>
+          <p class="card-tagline">"Clear mind. Clear path."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🌱 Celery</span>
+            <span class="fruit-tag">🌿 Basil</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Fresh Reset">
+        <div class="card-image">
+          <img src="images/07-FRESH%20RESET.png" alt="FRESH RESET" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip mint" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#07 · Cold Press</div>
+          <h3 class="card-name">FRESH RESET</h3>
+          <p class="card-th">รีเซ็ตใหม่ สดใสอีกครั้ง</p>
+          <p class="card-tagline">"Because you deserve to feel new again."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🌿 Mint</span>
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🥒 Cucumber</span>
+            <span class="fruit-tag">🥬 Kale</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Pure Joy">
+        <div class="card-image">
+          <img src="images/08-PURE%20JOY.png" alt="PURE JOY" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip olive" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#08 · Cold Press</div>
+          <h3 class="card-name">PURE JOY</h3>
+          <p class="card-th">ความสุขง่ายๆ อยู่ตรงนี้</p>
+          <p class="card-tagline">"Simple is the new beautiful."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍈 Guava</span>
+            <span class="fruit-tag">🍎 Red Apple</span>
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🟢 Lime</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Glow Up">
+        <div class="card-image">
+          <img src="images/09-GLOW%20UP.png" alt="GLOW UP" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip emerald" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#09 · Cold Press</div>
+          <h3 class="card-name">GLOW UP</h3>
+          <p class="card-th">สวยจากข้างใน ส่องออกข้างนอก</p>
+          <p class="card-tagline">"Nourish your glow from within."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🥑 Avocado</span>
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🍎 Apple</span>
+            <span class="fruit-tag">🌱 Spinach</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Feel Alive">
+        <div class="card-image">
+          <img src="images/10-FEEL%20ALIVE.png" alt="FEEL ALIVE" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+        </div>
+        <div class="card-color-strip ruby" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#10 · Cold Press</div>
+          <h3 class="card-name">FEEL ALIVE</h3>
+          <p class="card-th">ตื่นมีชีวิต รู้สึกได้ทุกวัน</p>
+          <p class="card-tagline">"Antioxidants that love you back."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🟣 Pomegranate</span>
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🥕 Carrot</span>
+            <span class="fruit-tag">🌿 Mint</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- AFFIRMATION SECTION -->
+  <section class="affirmation-section" aria-labelledby="affirmation-title">
+    <div class="mascot-deco" aria-hidden="true" style="margin-bottom:36px;">
+      <img src="images/Better Juice_Mascot_Set2_3.png" alt="" width="140" class="mascot-float-sm" style="filter:drop-shadow(0 12px 24px rgba(0,0,0,0.15));">
+    </div>
+    <div class="section-label">The Better Juice Philosophy</div>
+    <h2 class="section-title" id="affirmation-title">
+      ทุกแก้วคือ<br><em>สิ่งที่คุณบอกกับตัวเอง</em>
+    </h2>
+    <p>เราเชื่อว่าคำพูดมีพลัง ชื่อเมนูทุกอันคือ affirmation ที่คุณเลือกในวันนั้น เพราะวันดีๆ เริ่มจากความคิดที่ดี</p>
+    <div class="affirmation-pills" role="list">
+      <span class="affirmation-pill" role="listitem">"I rise up today."</span>
+      <span class="affirmation-pill" role="listitem">"I start fresh."</span>
+      <span class="affirmation-pill" role="listitem">"Good vibes only."</span>
+      <span class="affirmation-pill" role="listitem">"I am powerful."</span>
+      <span class="affirmation-pill" role="listitem">"My mind is clear."</span>
+      <span class="affirmation-pill" role="listitem">"I feel alive."</span>
+      <span class="affirmation-pill" role="listitem">"I glow from within."</span>
+      <span class="affirmation-pill" role="listitem">"I deserve this."</span>
+      <span class="affirmation-pill" role="listitem">"I am at my best."</span>
+      <span class="affirmation-pill" role="listitem">"I stay sunny."</span>
+    </div>
+  </section>
+
+  <!-- SMOOTHIES -->
+  <section class="smoothies-section" id="smoothies" aria-labelledby="smoothies-title">
+    <div class="section-label">🥤 Smoothies</div>
+    <h2 class="section-title" id="smoothies-title">Smoothies<br>เข้มข้น เต็มคุณค่า</h2>
+    <p class="section-desc">Blend จากผลไม้แช่แข็งคุณภาพสูง Oat Milk, Almond Milk และ superfoods เลือกได้ตามอารมณ์ทุกวัน</p>
+
+    <div class="menu-grid" role="list">
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: I Feel Good">
+              <div class="card-image">
+        <img src="images/11-%20FEEL%20GOOD.png" alt="#11" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip pink" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#11 · Smoothie</div>
+          <h3 class="card-name">I FEEL GOOD</h3>
+          <p class="card-th">อิ่ม อร่อย มีความสุข</p>
+          <p class="card-tagline">"This is what joy tastes like."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍓 Strawberry</span>
+            <span class="fruit-tag">🍌 Banana</span>
+            <span class="fruit-tag">🥛 Yogurt</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: In Full Bloom">
+              <div class="card-image">
+        <img src="images/12-GLOW%20UP-.png" alt="#12" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip rose" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#12 · Smoothie</div>
+          <h3 class="card-name">IN FULL BLOOM</h3>
+          <p class="card-th">กำลังสวยขึ้น ทุกเซลล์</p>
+          <p class="card-tagline">"You're blooming — quietly."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍓 Strawberry</span>
+            <span class="fruit-tag">🍌 Banana</span>
+            <span class="fruit-tag">🫀 Beetroot Powder</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: You Deserve This">
+              <div class="card-image">
+        <img src="images/13-YOU%20DESERVE%20IT.png" alt="#13" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip lavender" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#13 · Smoothie</div>
+          <h3 class="card-name">YOU DESERVE THIS</h3>
+          <p class="card-th">คุณทำได้แล้ว คุณคู่ควร</p>
+          <p class="card-tagline">"Treat yourself — you've earned it."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🥑 Avocado</span>
+            <span class="fruit-tag">🌰 Almond Milk</span>
+            <span class="fruit-tag">🍯 Honey</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Ride High">
+              <div class="card-image">
+        <img src="images/14-HIGH%20VIBE.png" alt="#14" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip purple" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#14 · Smoothie</div>
+          <h3 class="card-name">RIDE HIGH</h3>
+          <p class="card-th">พลังบวก ท่วมท้น</p>
+          <p class="card-tagline">"Electric energy. Unstoppable mood."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍫 Cacao</span>
+            <span class="fruit-tag">🫐 Raspberry</span>
+            <span class="fruit-tag">🍌 Banana</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: At My Best">
+              <div class="card-image">
+        <img src="images/15-TOP%20FORM.png" alt="#15" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip tropical" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#15 · Smoothie</div>
+          <h3 class="card-name">AT MY BEST</h3>
+          <p class="card-th">วันนี้ฉันอยู่ในฟอร์มดีที่สุด</p>
+          <p class="card-tagline">"Peak performance — inside out."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🥭 Mango</span>
+            <span class="fruit-tag">🍑 Peach</span>
+            <span class="fruit-tag">🍓 Strawberry</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Flow State">
+        <div class="card-color-strip sky" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#16 · Smoothie</div>
+          <h3 class="card-name">FLOW STATE</h3>
+          <p class="card-th">โฟกัส ลื่นไหล ไม่มีสะดุด</p>
+          <p class="card-tagline">"In the zone. Stay there."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍌 Banana</span>
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🌰 Oat Milk</span>
+            <span class="fruit-tag">🌿 Cinnamon</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Stay Sunny">
+              <div class="card-image">
+        <img src="images/17-STAY%20SUNNY.png" alt="#17" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip amber" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#17 · Smoothie</div>
+          <h3 class="card-name">STAY SUNNY</h3>
+          <p class="card-th">วันนี้แดดออก แม้ฟ้าครึ้ม</p>
+          <p class="card-tagline">"Sunshine — in a cup."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🥭 Mango</span>
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🌸 Passion Fruit</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Light & Bright">
+        <div class="card-color-strip mint" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#18 · Smoothie</div>
+          <h3 class="card-name">LIGHT & BRIGHT</h3>
+          <p class="card-th">เบา สด ใส ไม่มีความหนัก</p>
+          <p class="card-tagline">"Clean body. Clear mind."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍈 Guava</span>
+            <span class="fruit-tag">🍏 Green Apple</span>
+            <span class="fruit-tag">🟢 Lime</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Grow Strong">
+              <div class="card-image">
+        <img src="images/19-GROW%20STRONG.png" alt="#19" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip berry" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#19 · Smoothie</div>
+          <h3 class="card-name">GROW STRONG</h3>
+          <p class="card-th">แข็งแกร่งขึ้นทุกวัน ไม่หยุด</p>
+          <p class="card-tagline">"Every rep. Every sip. Counts."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🫐 Mixed Berry</span>
+            <span class="fruit-tag">🍌 Banana</span>
+            <span class="fruit-tag">🥜 Peanut Butter</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Island Mode">
+              <div class="card-image">
+        <img src="images/20-GO%20Tropical.png" alt="#20" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip teal" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#20 · Smoothie</div>
+          <h3 class="card-name">ISLAND MODE</h3>
+          <p class="card-th">ปิดโหมดเครียด เปิดโหมดพัก</p>
+          <p class="card-tagline">"Somewhere warm. Somewhere free."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🥭 Mango</span>
+            <span class="fruit-tag">🥥 Coconut Water</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Fired Up">
+              <div class="card-image">
+        <img src="images/21-WARM%20UP.png" alt="#21" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip coral" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#21 · Smoothie</div>
+          <h3 class="card-name">FIRED UP</h3>
+          <p class="card-th">ไฟติด พร้อมลุยแล้ว</p>
+          <p class="card-tagline">"Ready. Set. Go."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍍 Pineapple</span>
+            <span class="fruit-tag">🍓 Strawberry</span>
+            <span class="fruit-tag">🥛 Yogurt</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Sweet Life">
+              <div class="card-image">
+        <img src="images/22-PURE%20JOY.png" alt="#22" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip cacao" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#22 · Smoothie</div>
+          <h3 class="card-name">SWEET LIFE</h3>
+          <p class="card-th">ชีวิตดี อร่อยด้วย</p>
+          <p class="card-tagline">"Life is good — taste it."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍫 Cacao</span>
+            <span class="fruit-tag">🥑 Avocado</span>
+            <span class="fruit-tag">🍌 Banana</span>
+            <span class="fruit-tag">🌰 Almond Milk</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal" role="listitem" aria-label="Menu: Cool Wave">
+              <div class="card-image">
+        <img src="images/23-COOL%20WAVE.png" alt="#23" loading="lazy" onerror="this.parentElement.style.cssText='height:0;padding:0;overflow:hidden;'">
+      </div>
+<div class="card-color-strip cool" aria-hidden="true"></div>
+        <div class="card-body">
+          <div class="card-number">#23 · Smoothie</div>
+          <h3 class="card-name">COOL WAVE</h3>
+          <p class="card-th">หายใจออก เบาแล้ว เย็นแล้ว</p>
+          <p class="card-tagline">"Breathe out. Cool down. Relax."</p>
+          <div class="card-fruits">
+            <span class="fruit-tag">🍉 Watermelon</span>
+            <span class="fruit-tag">🫐 Raspberry</span>
+            <span class="fruit-tag">🟢 Lime</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="order" aria-labelledby="cta-title">
+    <div class="mascot-deco" aria-hidden="true" style="margin-bottom:32px;">
+      <img src="images/Better Juice_Mascot_Set2_7.png" alt="" width="180" class="mascot-float-sm">
+    </div>
+    <div class="section-label">สั่งเลย</div>
+    <h2 class="section-title" id="cta-title">
+      วันนี้คุณเป็น<br><em>เวอร์ชั่นไหน?</em>
+    </h2>
+    <p style="color:var(--text-mid);font-size:0.95rem;max-width:420px;line-height:1.8;margin-bottom:40px;">เลือกเมนูที่ตรงกับวันของคุณ แล้วปล่อยให้ Better Juice ทำหน้าที่ที่เหลือ</p>
+    <div class="cta-actions">
+      <a href="tel:+66" class="btn-primary" aria-label="โทรสั่ง">📞 โทรสั่ง</a>
+      <a href="https://line.me" class="btn-secondary" aria-label="สั่งผ่าน LINE">💬 สั่งผ่าน LINE</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="bj-logo" aria-label="Better Juice Home" style="margin-bottom:20px;display:inline-flex;">
+        <img src="images/250904_wk_Better Juice_File logo.ai (1).png" alt="Better Juice" class="bj-logo-img"
+             style="height:64px;width:auto;" onerror="this.style.display='none'">
+      </a>
+      <p>เราเชื่อว่าสุขภาพที่ดีเริ่มจากการเลือกที่ดี — เรียบง่าย สะอาด และเป็นธรรมชาติ ทุกแก้วทำให้วันของคุณดีขึ้น</p>
+    </div>
+    <div class="footer-col">
+      <h4>เมนู</h4>
+      <ul>
+        <li><a href="#cold-press">Cold Press Juice</a></li>
+        <li><a href="#smoothies">Smoothies</a></li>
+        <li><a href="#why">เกี่ยวกับเรา</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ติดต่อ</h4>
+      <ul>
+        <li><a href="https://line.me" aria-label="LINE">LINE: @betterjuice</a></li>
+        <li><a href="https://instagram.com" aria-label="Instagram">Instagram: @betterjuice</a></li>
+        <li><a href="tel:+66" aria-label="Phone">โทร: 08X-XXX-XXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Better Juice. All rights reserved.</p>
+    <p>We believe better health starts with better choices — simple, clean, and natural.</p>
+  </div>
+</footer>
+
+<!-- ─── SCROLL REVEAL JS ─── -->
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Stagger children
+        const children = entry.target.querySelectorAll('.menu-card, .why-card, .process-step');
+        children.forEach((child, i) => {
+          setTimeout(() => child.classList.add('visible'), i * 80);
+        });
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.menu-card').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 40
+      ? '0 4px 20px rgba(0,0,0,0.15)'
+      : 'none';
+  });
+
+  // Reduce motion support
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.affirmation-track').forEach(el => {
+      el.style.animation = 'none';
+    });
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+</script>
+
+<!-- Structured Data (SEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "name": "Better Juice",
+  "description": "Cold-Press Juice & Smoothies ที่ทำให้ทุกวันของคุณดีขึ้น สดจากธรรมชาติ ไม่มีน้ำตาลเพิ่ม",
+  "servesCuisine": "Healthy Beverages",
+  "menu": "#cold-press",
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "Better Juice Menu",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Cold Press Juice",
+        "description": "สกัดเย็น รักษาวิตามินและ enzyme ครบ 10 เมนู"
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Smoothies",
+        "description": "เข้มข้น เต็มคุณค่า 13 เมนู"
+      }
+    ]
+  },
+  "priceRange": "฿฿",
+  "currenciesAccepted": "THB",
+  "paymentAccepted": "Cash, Transfer"
+}
+</script>
+
+</body>
+</html>
