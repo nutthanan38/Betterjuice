@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Better Juice — Menu Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F4EFE0;
+    --cream-dark: #EAE2CC;
+    --dark: #1C1C1C;
+    --mid: #5A5A5A;
+    --light: #9A9A9A;
+    --rule: #C8B89A;
+  }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', 'Noto Sans Thai', sans-serif;
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* ────── WRAPPER ────── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 52px 40px 60px;
+  }
+
+  /* ────── HEADER ────── */
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .header-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .header-rule hr { flex: 1; border: none; border-top: 1px solid var(--rule); }
+  .header-rule span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--mid);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 74px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+
+  .brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 8px;
+  }
+
+  .header-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--mid);
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  /* ────── GRID ────── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* ────── CARD ────── */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+
+  /* color strip left */
+  .card-strip {
+    width: 7px;
+    flex-shrink: 0;
+  }
+
+  /* glass illustration */
+  .card-glass {
+    width: 90px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background: linear-gradient(180deg, #FAFAF8 0%, #F0ECE4 100%);
+  }
+
+  .glass-svg {
+    width: 52px;
+    height: 68px;
+  }
+
+  /* content */
+  .card-content {
+    flex: 1;
+    padding: 18px 18px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-top {}
+
+  .card-num {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--light);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .card-tagline-en {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    color: var(--mid);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+
+  .card-tagline-th {
+    font-family: 'Noto Sans Thai', 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--light);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 10px 0 8px;
+  }
+
+  .card-ingredients {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .card-ingredients span {
+    display: inline-block;
+  }
+  .card-ingredients span + span::before {
+    content: " · ";
+    opacity: 0.6;
+  }
+
+  /* ────── FOOTER ────── */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer p {
+    font-size: 11px;
+    color: var(--light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ────── PRINT ────── */
+  @media print {
+    body { background: white; }
+    .page { padding: 20px; }
+    .card { break-inside: avoid; }
+    .card:hover { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-rule">
+      <hr><span>Cold Press · Smoothie · Wellness</span><hr>
+    </div>
+    <div class="brand">Better Juice</div>
+    <div class="brand-sub">Clean · Natural · Nourishing</div>
+    <div class="header-tagline">Where Clean meets Delicious.</div>
+  </header>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <!-- 01 RISE UP -->
+    <div class="card">
+      <div class="card-strip" style="background:#E8941A;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#E8941A22" stroke="#E8941A" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#E8941A55"/>
+          <circle cx="26" cy="7" r="3" fill="#E8941A88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#E8941A" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 01</div>
+          <div class="card-name" style="color:#C47A10;">RISE UP</div>
+          <div class="card-tagline-en">"The day's better when you start it right."</div>
+          <div class="card-tagline-th">วันนี้ดีขึ้น เริ่มจากแก้วนี้</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Carrot</span><span>Ginger</span><span>Lime</span><span>Apple</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 CLEAN SLATE -->
+    <div class="card">
+      <div class="card-strip" style="background:#1E6B3F;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#1E6B3F22" stroke="#1E6B3F" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#1E6B3F55"/>
+          <circle cx="26" cy="7" r="3" fill="#1E6B3F88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#1E6B3F" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 02</div>
+          <div class="card-name" style="color:#1E6B3F;">CLEAN SLATE</div>
+          <div class="card-tagline-en">"Let go of yesterday. Start fresh."</div>
+          <div class="card-tagline-th">ปล่อยทิ้งสิ่งเก่า เริ่มต้นใหม่อีกครั้ง</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Cucumber</span><span>Pineapple</span><span>Kale</span><span>Ginger</span><span>Celery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 GOOD VIBES -->
+    <div class="card">
+      <div class="card-strip" style="background:#F26522;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#F2652222" stroke="#F26522" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#F2652255"/>
+          <circle cx="26" cy="7" r="3" fill="#F2652288"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#F26522" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 03</div>
+          <div class="card-name" style="color:#D45510;">GOOD VIBES</div>
+          <div class="card-tagline-en">"Vitamin C for your soul."</div>
+          <div class="card-tagline-th">แค่ดื่มนี้ วันนี้ก็ดีแล้ว</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Passion Fruit</span><span>Orange</span><span>Celery</span><span>Carrot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 ESCAPE -->
+    <div class="card">
+      <div class="card-strip" style="background:#E03B3B;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#E03B3B22" stroke="#E03B3B" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#E03B3B55"/>
+          <circle cx="26" cy="7" r="3" fill="#E03B3B88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#E03B3B" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 04</div>
+          <div class="card-name" style="color:#C02828;">ESCAPE</div>
+          <div class="card-tagline-en">"Your 5-minute tropical vacation."</div>
+          <div class="card-tagline-th">พักใจ เหมือนได้พักร้อน</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Watermelon</span><span>Pineapple</span><span>Passion Fruit</span><span>Lime</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 POWER SURGE -->
+    <div class="card">
+      <div class="card-strip" style="background:#7B1A46;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#7B1A4622" stroke="#7B1A46" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#7B1A4655"/>
+          <circle cx="26" cy="7" r="3" fill="#7B1A4688"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#7B1A46" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 05</div>
+          <div class="card-name" style="color:#7B1A46;">POWER SURGE</div>
+          <div class="card-tagline-en">"Strong body, stronger you."</div>
+          <div class="card-tagline-th">แข็งแกร่งกว่าเมื่อวาน ทุกวัน</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Beetroot</span><span>Lemon</span><span>Carrot</span><span>Apple</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 THINK SHARP -->
+    <div class="card">
+      <div class="card-strip" style="background:#174D2B;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#174D2B22" stroke="#174D2B" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#174D2B55"/>
+          <circle cx="26" cy="7" r="3" fill="#174D2B88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#174D2B" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 06</div>
+          <div class="card-name" style="color:#174D2B;">THINK SHARP</div>
+          <div class="card-tagline-en">"Clear mind. Clear path."</div>
+          <div class="card-tagline-th">สมองใส คิดชัด ทำได้</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Lime</span><span>Basil</span><span>Pineapple</span><span>Celery</span><span>Green Apple</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 FRESH RESET -->
+    <div class="card">
+      <div class="card-strip" style="background:#45B87F;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#45B87F22" stroke="#45B87F" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#45B87F55"/>
+          <circle cx="26" cy="7" r="3" fill="#45B87F88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#45B87F" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 07</div>
+          <div class="card-name" style="color:#2D9B65;">FRESH RESET</div>
+          <div class="card-tagline-en">"Because you deserve to feel new again."</div>
+          <div class="card-tagline-th">รีเซ็ตใหม่ สดใสอีกครั้ง</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Mint</span><span>Lemon</span><span>Kale</span><span>Cucumber</span><span>Green Apple</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 PURE JOY -->
+    <div class="card">
+      <div class="card-strip" style="background:#5B9E52;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#5B9E5222" stroke="#5B9E52" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#5B9E5255"/>
+          <circle cx="26" cy="7" r="3" fill="#5B9E5288"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#5B9E52" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 08</div>
+          <div class="card-name" style="color:#3D7E36;">PURE JOY</div>
+          <div class="card-tagline-en">"Simple is the new beautiful."</div>
+          <div class="card-tagline-th">ความสุขง่ายๆ อยู่ตรงนี้</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Guava</span><span>Green Apple</span><span>Lime</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 GLOW UP -->
+    <div class="card">
+      <div class="card-strip" style="background:#2D8C6B;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#2D8C6B22" stroke="#2D8C6B" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#2D8C6B55"/>
+          <circle cx="26" cy="7" r="3" fill="#2D8C6B88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#2D8C6B" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 09</div>
+          <div class="card-name" style="color:#2D8C6B;">GLOW UP</div>
+          <div class="card-tagline-en">"Nourish your glow from within."</div>
+          <div class="card-tagline-th">สวยจากข้างใน ส่องออกข้างนอก</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Avocado</span><span>Pineapple</span><span>Spinach</span><span>Apple</span><span>Lime</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 FEEL ALIVE -->
+    <div class="card">
+      <div class="card-strip" style="background:#A31B2A;"></div>
+      <div class="card-glass">
+        <svg class="glass-svg" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8 L6 64 Q6 67 9 67 L43 67 Q46 67 46 64 L42 8 Z" fill="#A31B2A22" stroke="#A31B2A" stroke-width="1.5"/>
+          <path d="M11 22 L8 64 Q8 65 9 65 L43 65 Q44 65 44 64 L41 22 Z" fill="#A31B2A55"/>
+          <circle cx="26" cy="7" r="3" fill="#A31B2A88"/>
+          <path d="M8 14 Q26 18 44 14" stroke="#A31B2A" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <div class="card-top">
+          <div class="card-num">No. 10</div>
+          <div class="card-name" style="color:#A31B2A;">FEEL ALIVE</div>
+          <div class="card-tagline-en">"Antioxidants that love you back."</div>
+          <div class="card-tagline-th">ตื่นมีชีวิต รู้สึกได้ทุกวัน</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span>Pomegranate</span><span>Mint</span><span>Lemon</span><span>Carrot</span><span>Green Apple</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>We believe better health starts with better choices — simple, clean, and natural.</p>
+  </footer>
+
+</div><!-- /page -->
+</body>
+</html>

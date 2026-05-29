@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>วิเคราะห์ยอดขาย พฤษภาคม 2025 vs 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; }
+
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 32px 40px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .header p { opacity: 0.75; font-size: 14px; }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 28px 24px; }
+
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .kpi { background: white; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,.08); border-left: 4px solid #ddd; }
+  .kpi.red { border-left-color: #ef4444; }
+  .kpi.green { border-left-color: #22c55e; }
+  .kpi.orange { border-left-color: #f97316; }
+  .kpi.blue { border-left-color: #3b82f6; }
+  .kpi-label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .kpi-value { font-size: 26px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
+  .kpi-sub { font-size: 13px; }
+  .kpi-sub.down { color: #ef4444; }
+  .kpi-sub.up { color: #22c55e; }
+
+  /* Section */
+  .section { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08); margin-bottom: 24px; }
+  .section-title { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .section-title .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+  .badge.red { background: #fee2e2; color: #dc2626; }
+  .badge.green { background: #dcfce7; color: #16a34a; }
+  .badge.orange { background: #ffedd5; color: #ea580c; }
+  .section-sub { font-size: 13px; color: #64748b; margin-bottom: 18px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+  /* Bar comparison */
+  .bar-compare { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row { display: flex; flex-direction: column; gap: 3px; }
+  .bar-label { font-size: 12px; color: #374151; font-weight: 500; display: flex; justify-content: space-between; }
+  .bar-label .amt { font-size: 11px; color: #64748b; }
+  .bar-track { background: #f1f5f9; border-radius: 4px; height: 8px; overflow: hidden; position: relative; }
+  .bar-fill-25 { background: #93c5fd; height: 8px; border-radius: 4px; position: absolute; }
+  .bar-fill-26 { background: #3b82f6; height: 8px; border-radius: 4px; position: absolute; top: 0; opacity: .85; }
+  .bar-both { display: flex; flex-direction: column; gap: 1px; }
+  .bar-single { height: 6px; border-radius: 3px; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 9px 12px; background: #f8fafc; color: #64748b; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .4px; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 9px 12px; border-bottom: 1px solid #f1f5f9; color: #374151; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .change-neg { color: #ef4444; font-weight: 600; }
+  .change-pos { color: #22c55e; font-weight: 600; }
+  .pill { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .pill-red { background: #fee2e2; color: #dc2626; }
+  .pill-green { background: #dcfce7; color: #16a34a; }
+  .pill-gray { background: #f1f5f9; color: #64748b; }
+
+  /* Insight box */
+  .insight { display: flex; gap: 12px; padding: 14px 16px; border-radius: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .insight.warn { background: #fff7ed; border-left: 3px solid #f97316; }
+  .insight.danger { background: #fef2f2; border-left: 3px solid #ef4444; }
+  .insight.good { background: #f0fdf4; border-left: 3px solid #22c55e; }
+  .insight.info { background: #eff6ff; border-left: 3px solid #3b82f6; }
+  .insight-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .insight-text { font-size: 13px; line-height: 1.6; }
+  .insight-text strong { font-weight: 700; }
+
+  /* Waterfall */
+  .waterfall { display: flex; flex-direction: column; gap: 8px; }
+  .wf-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .wf-label { width: 200px; flex-shrink: 0; color: #374151; }
+  .wf-bar-wrap { flex: 1; height: 22px; position: relative; background: #f8fafc; border-radius: 4px; overflow: hidden; }
+  .wf-bar { height: 22px; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; color: white; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .wf-val { width: 110px; text-align: right; font-weight: 700; font-size: 12px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+
+  canvas { max-height: 280px; }
+
+  .summary-box { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .summary-box h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+  .summary-points { display: flex; flex-direction: column; gap: 8px; }
+  .summary-point { display: flex; gap: 10px; font-size: 13.5px; line-height: 1.5; opacity: .9; }
+  .sp-num { background: #f97316; color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  @media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 วิเคราะห์ยอดขาย — พฤษภาคม 2025 vs 2026</h1>
+  <p>ที่มา: Sales Order (sale.order).xlsx &nbsp;|&nbsp; วิเคราะห์: ลูกค้า · สินค้า · เซลล์ · หมวดหมู่</p>
+</div>
+
+<div class="container">
+
+  <!-- Executive Summary -->
+  <div class="summary-box">
+    <h2>📋 สรุปผู้บริหาร</h2>
+    <div class="summary-points">
+      <div class="summary-point"><div class="sp-num">1</div><span>ยอดขายรวมลดลง <strong>1,223,976 บาท (-19.5%)</strong> จาก 6.29 ล้าน → 5.07 ล้านบาท เป็นการลดลงในทุกมิติ</span></div>
+      <div class="summary-point"><div class="sp-num">2</div><span>สาเหตุหลัก: <strong>เซลล์นิรุจย์ออกไป</strong> ทำให้สูญเสียลูกค้า 305,426 บาท และ<strong>ลูกค้าเก่า 182 รายหาย</strong> (มูลค่า 1.6 ล้านบาท) ได้ลูกค้าใหม่ 132 รายมาทดแทนเพียง 840k</span></div>
+      <div class="summary-point"><div class="sp-num">3</div><span>สินค้ากลุ่ม <strong>กระเป๋าดินสอ (LS)</strong> และ <strong>แฟ้ม/ถุง (FF)</strong> ร่วงหนักสุด หลายรายการหายไปจากตลาด 2026 โดยสิ้นเชิง (631 SKU)</span></div>
+      <div class="summary-point"><div class="sp-num">4</div><span>จุดสว่าง: <strong>Shopee ทั้งสองช่องทางโต</strong> SHOPEE_DOMON +83k (+96%) และ SHOPEE_LITTLE SMILE +9k ช่องทาง Online กำลังขยายตัว</span></div>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-grid">
+    <div class="kpi red">
+      <div class="kpi-label">ยอดขายรวม (บาท)</div>
+      <div class="kpi-value">5,067,368</div>
+      <div class="kpi-sub down">▼ 1,223,976 บาท (-19.5%) vs พ.ค. 2568</div>
+    </div>
+    <div class="kpi orange">
+      <div class="kpi-label">จำนวนลูกค้า</div>
+      <div class="kpi-value">410 ราย</div>
+      <div class="kpi-sub down">▼ 51 ราย จาก 461 ราย (-11.1%)</div>
+    </div>
+    <div class="kpi orange">
+      <div class="kpi-label">จำนวน SKU ที่ขาย</div>
+      <div class="kpi-value">1,464 SKU</div>
+      <div class="kpi-sub down">▼ 156 SKU จาก 1,620 SKU (-9.6%)</div>
+    </div>
+    <div class="kpi red">
+      <div class="kpi-label">ปริมาณขาย (ชิ้น)</div>
+      <div class="kpi-value">148,531</div>
+      <div class="kpi-sub down">▼ 30,435 ชิ้น (-17.0%) vs พ.ค. 2568</div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1 -->
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">ยอดขายรายเจ้าของ (Owner)</div>
+      <div class="section-sub">เปรียบเทียบ พ.ค. 2025 vs 2026</div>
+      <canvas id="ownerChart"></canvas>
+    </div>
+    <div class="section">
+      <div class="section-title">ยอดขายตามหมวดสินค้า (Top 8)</div>
+      <div class="section-sub">จัดกลุ่มจาก Prefix รหัสสินค้า</div>
+      <canvas id="catChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Customer Analysis -->
+  <div class="section">
+    <div class="section-title">🔍 มุมลูกค้า (Customer) <span class="badge red">หายไป 182 ราย · ได้ใหม่ 132 ราย</span></div>
+    <div class="section-sub">ยอดขายลดลงจากฝั่งลูกค้าเป็นสาเหตุหลัก</div>
+
+    <div class="three-col" style="margin-bottom:20px">
+      <div>
+        <canvas id="custSegChart"></canvas>
+      </div>
+      <div style="grid-column: span 2;">
+        <!-- Customer flow -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div style="background:#fef2f2;border-radius:10px;padding:16px;">
+            <div style="font-size:12px;color:#dc2626;font-weight:700;margin-bottom:8px;">❌ ลูกค้าที่หายไป (182 ราย)</div>
+            <div style="font-size:22px;font-weight:800;color:#dc2626;">-1,606,174 บาท</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;">สูญเสียรายได้จากลูกค้าที่ไม่กลับมาซื้อในพ.ค. 69</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:10px;padding:16px;">
+            <div style="font-size:12px;color:#16a34a;font-weight:700;margin-bottom:8px;">✅ ลูกค้าใหม่ (132 ราย)</div>
+            <div style="font-size:22px;font-weight:800;color:#16a34a;">+839,993 บาท</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;">ลูกค้าหน้าใหม่ที่เข้ามาในพ.ค. 69 ยังทดแทนไม่พอ</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">ลูกค้ารายใหญ่ที่ยอดขายลดหนักสุด (Top 8)</div>
+        <table>
+          <thead><tr>
+            <th>ลูกค้า</th>
+            <th class="num">ยอด 2025</th>
+            <th class="num">ยอด 2026</th>
+            <th class="num">เปลี่ยน %</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>หจก. เฟิร์สเครื่องเขียนฯ</td><td class="num">69,365</td><td class="num">0</td><td class="num"><span class="pill pill-red">-100%</span></td></tr>
+            <tr><td>หสม. เกรซ สเตชั่นเนอรี่ฯ</td><td class="num">67,912</td><td class="num">0</td><td class="num"><span class="pill pill-red">-100%</span></td></tr>
+            <tr><td>ร้าน กิจรุ่งเรือง</td><td class="num">59,600</td><td class="num">0</td><td class="num"><span class="pill pill-red">-100%</span></td></tr>
+            <tr><td>บ.ว.พานิช กรุ๊ป จำกัด</td><td class="num">156,546</td><td class="num">60,538</td><td class="num"><span class="pill pill-red">-61%</span></td></tr>
+            <tr><td>ร้าน ถาวรกิจ 2</td><td class="num">68,505</td><td class="num">24,696</td><td class="num"><span class="pill pill-red">-64%</span></td></tr>
+            <tr><td>บ.เชียงใหม่สมุดลานนาฯ</td><td class="num">66,823</td><td class="num">24,960</td><td class="num"><span class="pill pill-red">-63%</span></td></tr>
+            <tr><td>ร้าน มณีรัตน์</td><td class="num">64,876</td><td class="num">23,711</td><td class="num"><span class="pill pill-red">-63%</span></td></tr>
+            <tr><td>บ.สมอทองหาดใหญ่ จำกัด</td><td class="num">39,217</td><td class="num">0</td><td class="num"><span class="pill pill-red">-100%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">จำนวนลูกค้าตามขนาด (Segment)</div>
+        <table>
+          <thead><tr><th>ระดับ</th><th class="num">ลูกค้า 2025</th><th class="num">ลูกค้า 2026</th><th class="num">รายได้ 2025</th><th class="num">รายได้ 2026</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-red">Large 50k+</span></td><td class="num">21 ราย</td><td class="num">13 ราย</td><td class="num">1,418,036</td><td class="num">1,014,357</td></tr>
+            <tr><td><span class="pill" style="background:#fff3cd;color:#92400e;">Medium 20-50k</span></td><td class="num">69 ราย</td><td class="num">50 ราย</td><td class="num">2,078,211</td><td class="num">1,451,713</td></tr>
+            <tr><td><span class="pill pill-gray">Small 5-20k</span></td><td class="num">230 ราย</td><td class="num">209 ราย</td><td class="num">2,422,448</td><td class="num">2,294,051</td></tr>
+            <tr><td><span class="pill pill-gray">Micro &lt;5k</span></td><td class="num">141 ราย</td><td class="num">138 ราย</td><td class="num">372,649</td><td class="num">307,247</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="insight danger">
+          <div class="insight-icon">⚠️</div>
+          <div class="insight-text"><strong>ลูกค้า Large ลดจาก 21 → 13 ราย:</strong> ลูกค้ากลุ่มใหญ่ (ซื้อ 50k+/เดือน) หายไปถึง 8 ราย ส่งผลกระทบกว่า 400k บาท การรักษาลูกค้ากลุ่มนี้สำคัญที่สุด</div>
+        </div>
+        <div class="insight warn">
+          <div class="insight-icon">👤</div>
+          <div class="insight-text"><strong>เซลล์นิรุจย์ออกจากบริษัท:</strong> ดูแลลูกค้า 27 ราย ยอด 305,426 บาท และลูกค้าของเขาไม่ได้ถูก assign ให้เซลล์คนอื่นอย่างมีประสิทธิภาพ</div>
+        </div>
+        <div class="insight good">
+          <div class="insight-icon">🛍️</div>
+          <div class="insight-text"><strong>Shopee โตแรง:</strong> SHOPEE_DOMON +96% (+83k) — ช่องทาง Online กำลังชดเชยการสูญเสียช่องทาง Traditional Trade บางส่วน</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Analysis -->
+  <div class="section">
+    <div class="section-title">📦 มุมสินค้า (Product) <span class="badge red">631 SKU หายไป · 464 SKU เพิ่มใหม่</span></div>
+    <div class="section-sub">มีการเปลี่ยนแปลงพอร์ตสินค้าขนาดใหญ่ระหว่าง 2 ปี</div>
+
+    <div class="two-col" style="margin-bottom:20px">
+      <div>
+        <canvas id="catDropChart"></canvas>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Top สินค้าที่ยอดร่วงหนักสุด</div>
+        <table>
+          <thead><tr>
+            <th>สินค้า</th>
+            <th class="num">2025</th>
+            <th class="num">2026</th>
+            <th class="num">เปลี่ยน</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>[LS-1066] กระเป๋าดินสอ 2 ชั้น</td><td class="num">59,501</td><td class="num">0</td><td class="num change-neg">-59,501</td></tr>
+            <tr><td>[FF-079] แฟ้ม 1 กระดุม A4 ไม่มีลาย</td><td class="num">59,443</td><td class="num">0</td><td class="num change-neg">-59,443</td></tr>
+            <tr><td>[LS-434] กล่องดินสอ ซิปรอบ ลายการ์ตูน</td><td class="num">57,985</td><td class="num">0</td><td class="num change-neg">-57,985</td></tr>
+            <tr><td>[VCC-813] บอร์ดแขวนผนัง บุไม้ก๊อก</td><td class="num">52,141</td><td class="num">0</td><td class="num change-neg">-52,141</td></tr>
+            <tr><td>[LS-252] กล่องดินสอซิปรอบลายการ์ตูน</td><td class="num">46,615</td><td class="num">0</td><td class="num change-neg">-46,615</td></tr>
+            <tr><td>[LS-1057] กล่องดินสอซิปรอบ 3D</td><td class="num">45,419</td><td class="num">1,412</td><td class="num change-neg">-44,006</td></tr>
+            <tr><td>[LS-209] กระเป๋าผ้าแคนวาสมีซิป</td><td class="num">43,431</td><td class="num">0</td><td class="num change-neg">-43,431</td></tr>
+            <tr><td>[PW-178] Glossy Paper 150 GSM A4</td><td class="num">103,014</td><td class="num">66,440</td><td class="num change-neg">-36,574</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">🌟 สินค้าที่เติบโตใน 2026</div>
+        <table>
+          <thead><tr>
+            <th>สินค้า</th>
+            <th class="num">2025</th>
+            <th class="num">2026</th>
+            <th class="num">เปลี่ยน</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>[PW-179] Glossy Paper 180 GSM A4</td><td class="num">70,957</td><td class="num">121,851</td><td class="num change-pos">+50,894</td></tr>
+            <tr><td>[CE-027] คลิปบอร์ดพลาสติก A4 สีหวาน</td><td class="num">12,877</td><td class="num">52,593</td><td class="num change-pos">+39,715</td></tr>
+            <tr><td>[FF-042] กระเป๋าดินสอผ้าดิบ ลายการ์ตูน</td><td class="num">21,843</td><td class="num">36,898</td><td class="num change-pos">+15,055</td></tr>
+            <tr><td>[JS-014] ปูนปลาสเตอร์ ตราช้าง</td><td class="num">15,593</td><td class="num">30,142</td><td class="num change-pos">+14,549</td></tr>
+            <tr><td>[LS-737] กระเป๋าดินสอ PVC ใส</td><td class="num">19,469</td><td class="num">32,583</td><td class="num change-pos">+13,114</td></tr>
+            <tr><td>[KV-091] คลิปบอร์ดพลาสติก A4</td><td class="num">46,214</td><td class="num">57,637</td><td class="num change-pos">+11,423</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="insight danger">
+          <div class="insight-icon">📉</div>
+          <div class="insight-text"><strong>กลุ่ม LS (กระเป๋าดินสอ) ร่วงหนักสุด -403,960 บาท (-23%):</strong> หลาย SKU ในซีรีส์ลายการ์ตูน/3D หายไปจาก 2026 ทั้งหมด น่าสงสัยว่าเป็นเรื่อง Stock หมด หรือ discontinued</div>
+        </div>
+        <div class="insight danger">
+          <div class="insight-icon">📁</div>
+          <div class="insight-text"><strong>กลุ่ม FF (แฟ้ม) -269,165 บาท (-28%):</strong> [FF-079] แฟ้ม 1 กระดุมผิวเรียบ (59k) หายไปโดยสิ้นเชิง และยังมีสินค้า FF อื่นหายตามอีกหลายรายการ</div>
+        </div>
+        <div class="insight good">
+          <div class="insight-icon">📄</div>
+          <div class="insight-text"><strong>กลุ่ม PW (กระดาษโฟโต้) ยังแข็งแรง:</strong> Glossy 180 GSM โต +71% (+50k) ชดเชย Glossy 150 GSM ที่ลดลง — ตลาดกำลัง trade up สู่คุณภาพสูงขึ้น</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Salesperson & Other -->
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">👨‍💼 มุมเซลล์ (Salesperson)</div>
+      <div class="section-sub">เซลล์หลายคนออกไป ส่งผลยอดลดฉับพลัน</div>
+      <canvas id="salChart" style="max-height:240px;"></canvas>
+      <div style="margin-top:16px;">
+        <div class="insight danger">
+          <div class="insight-icon">🚪</div>
+          <div class="insight-text"><strong>เซลล์ที่ออกไปใน 2026 รวม 3 คน: นิรุจย์ + คุณเซลล์ + ใบตอง</strong> สูญเสียยอดรวม ~354,000 บาท และลูกค้าเหล่านั้นส่วนใหญ่ยังไม่กลับมาซื้อ</div>
+        </div>
+        <div class="insight warn">
+          <div class="insight-icon">📊</div>
+          <div class="insight-text"><strong>เซลล์ที่เหลือทุกคนยอดลดลงเช่นกัน:</strong> ทีปพิพัฒน์ -268k, ดุจชญา -255k, คุณเล็ก -198k แสดงว่ามีปัจจัยอื่นนอกจากเซลล์ออกด้วย</div>
+        </div>
+        <div class="insight good">
+          <div class="insight-icon">⭐</div>
+          <div class="insight-text"><strong>แอดมิน-ฟิล์ม โต +113k (+72%):</strong> น่าจับตา อาจเป็นคนที่รับลูกค้าบางส่วนมาดูแลแทน</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔄 Waterfall: ที่มาของยอดที่ลดลง</div>
+      <div class="section-sub">แยกย่อยว่า 1.22 ล้านบาทที่หายไปมาจากไหน</div>
+      <div class="waterfall" style="margin-top:8px;">
+        <div class="wf-row">
+          <div class="wf-label" style="font-weight:700;">ยอด พ.ค. 2568</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:100%;background:#3b82f6;">6,291,344</div></div>
+          <div class="wf-val" style="color:#3b82f6;">+6,291,344</div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">ลูกค้าหายไปทั้งหมด</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:25.5%;background:#ef4444;"></div></div>
+          <div class="wf-val" style="color:#ef4444;">-1,606,174</div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label">ลูกค้าเดิมที่ยอดลด</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:22%;background:#f97316;"></div></div>
+          <div class="wf-val" style="color:#f97316;">~-457,802</div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label" style="font-weight:700;color:#22c55e;">ลูกค้าใหม่ (+132 ราย)</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:13.3%;background:#22c55e;">+839,993</div></div>
+          <div class="wf-val" style="color:#22c55e;">+839,993</div>
+        </div>
+        <div class="wf-row">
+          <div class="wf-label" style="font-weight:700;color:#22c55e;">ลูกค้าเดิมที่ยอดเพิ่ม</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:3.2%;background:#86efac;"></div></div>
+          <div class="wf-val" style="color:#22c55e;">~+200,000</div>
+        </div>
+        <div class="wf-row" style="border-top:2px solid #e2e8f0;padding-top:8px;margin-top:4px;">
+          <div class="wf-label" style="font-weight:700;">ยอด พ.ค. 2569</div>
+          <div class="wf-bar-wrap"><div class="wf-bar" style="width:80.5%;background:#1e293b;">5,067,368</div></div>
+          <div class="wf-val" style="color:#1e293b;font-size:14px;font-weight:800;">5,067,368</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">มุมอื่น ๆ ที่น่าสนใจ</div>
+        <div class="insight info">
+          <div class="insight-icon">🏪</div>
+          <div class="insight-text"><strong>Warehouse B5C พุ่ง +198k (+231%):</strong> มีการเคลื่อนย้าย stock หรือสินค้าใหม่เข้าคลัง B5C อย่างมีนัยสำคัญ ขณะที่ B5A ลด -146k</div>
+        </div>
+        <div class="insight info">
+          <div class="insight-icon">📦</div>
+          <div class="insight-text"><strong>อ้อน (Owner) ยอดลดมากสุด -638k (-24%):</strong> กลุ่มสินค้าของอ้อนน่าจะมีสินค้ากลุ่ม LS และ FF เยอะ ทำให้กระทบหนัก</div>
+        </div>
+        <div class="insight warn">
+          <div class="insight-icon">💰</div>
+          <div class="insight-text"><strong>ยอดเฉลี่ยต่อลูกค้าลดลง:</strong> 13,647 → 12,359 บาท/ลูกค้า (-9.4%) แสดงว่าลูกค้าที่ยังอยู่ก็ซื้อน้อยลงด้วย ไม่ใช่แค่จำนวนลูกค้าที่ลด</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="section">
+    <div class="section-title">💡 ข้อเสนอแนะเชิงกลยุทธ์</div>
+    <div class="three-col">
+      <div style="background:#fef2f2;border-radius:10px;padding:16px;border-top:3px solid #ef4444;">
+        <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:8px;">🚨 ด่วน (1-2 สัปดาห์)</div>
+        <ul style="list-style:none;font-size:13px;line-height:2;">
+          <li>📞 โทรหาลูกค้าที่หายไป 182 ราย โดยเฉพาะ Top 20 ที่ยอดสูง</li>
+          <li>👤 Assign ลูกค้าของนิรุจย์ให้เซลล์คนใหม่ทันที</li>
+          <li>📋 สอบถามเหตุผลที่ลูกค้า Large หยุดซื้อ (ราคา? สินค้า? เซลล์?)</li>
+        </ul>
+      </div>
+      <div style="background:#fff7ed;border-radius:10px;padding:16px;border-top:3px solid #f97316;">
+        <div style="font-size:12px;font-weight:700;color:#ea580c;margin-bottom:8px;">⚡ ระยะสั้น (1 เดือน)</div>
+        <ul style="list-style:none;font-size:13px;line-height:2;">
+          <li>📦 ตรวจสอบ 631 SKU ที่หายไปว่า stock หมดหรือ discontinued</li>
+          <li>🛍️ ลงทุนเพิ่มช่อง Shopee ที่กำลังโต (ทั้ง DOMON & LITTLE SMILE)</li>
+          <li>📄 Push Glossy 180 GSM ให้กับลูกค้าที่เคยซื้อ 150 GSM</li>
+        </ul>
+      </div>
+      <div style="background:#f0fdf4;border-radius:10px;padding:16px;border-top:3px solid #22c55e;">
+        <div style="font-size:12px;font-weight:700;color:#16a34a;margin-bottom:8px;">🎯 ระยะกลาง (ไตรมาส)</div>
+        <ul style="list-style:none;font-size:13px;line-height:2;">
+          <li>🏢 สร้าง Key Account Program สำหรับลูกค้า Large (50k+/เดือน)</li>
+          <li>📊 ติดตาม Early Warning เมื่อลูกค้า Medium ไม่สั่งซื้อ 45 วัน</li>
+          <li>💼 พัฒนา Product Portfolio ใหม่แทน SKU ที่หมดอายุ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:#94a3b8;font-size:12px;padding:16px 0;">
+    รายงานสร้างอัตโนมัติจาก Sales Order (sale.order).xlsx &nbsp;|&nbsp; วิเคราะห์โดย Claude &nbsp;|&nbsp; 29 พ.ค. 2569
+  </div>
+</div>
+
+<script>
+// Owner Chart
+new Chart(document.getElementById('ownerChart'), {
+  type: 'bar',
+  data: {
+    labels: ['พี่โหนก','อ้อน','พี่กล้วย','ปลา'],
+    datasets: [
+      { label: 'พ.ค. 2568', data: [2648232, 2641860, 907831, 65903], backgroundColor: '#93c5fd', borderRadius: 4 },
+      { label: 'พ.ค. 2569', data: [2278165, 2004101, 677502, 93121], backgroundColor: '#3b82f6', borderRadius: 4 }
+    ]
+  },
+  options: { plugins: { legend: { position: 'top' } }, scales: { y: { ticks: { callback: v => (v/1000)+'k' } } } }
+});
+
+// Category Chart
+new Chart(document.getElementById('catChart'), {
+  type: 'bar',
+  data: {
+    labels: ['LS','FF','VCC','PG','PW','RS','ET','PT'],
+    datasets: [
+      { label: 'พ.ค. 2568', data: [1748465,961024,727469,392418,334816,199908,165448,145317], backgroundColor: '#a5b4fc', borderRadius: 4 },
+      { label: 'พ.ค. 2569', data: [1344504,691859,623279,364387,348728,95595,121945,83286], backgroundColor: '#6366f1', borderRadius: 4 }
+    ]
+  },
+  options: { plugins: { legend: { position: 'top' } }, scales: { y: { ticks: { callback: v => (v/1000)+'k' } } } }
+});
+
+// Category Drop Chart
+new Chart(document.getElementById('catDropChart'), {
+  type: 'bar',
+  data: {
+    labels: ['LS\nกระเป๋าดินสอ','FF\nแฟ้ม/ถุง','RS','KW','PT','BE\nซอง','ART','ET'],
+    datasets: [{
+      label: 'ยอดที่ลดลง (บาท)',
+      data: [403960, 269165, 104313, 58192, 62031, 53973, 28297, 43504],
+      backgroundColor: '#fca5a5',
+      borderColor: '#ef4444',
+      borderWidth: 1,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { display: false }, title: { display: true, text: 'ยอดที่ลดลงตามหมวดสินค้า (บาท)', font: { size: 13 } } },
+    scales: { x: { ticks: { callback: v => (v/1000)+'k' } } }
+  }
+});
+
+// Customer segment donut
+new Chart(document.getElementById('custSegChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Large 50k+ (13)','Medium 20-50k (50)','Small 5-20k (209)','Micro <5k (138)'],
+    datasets: [
+      { label: '2026', data: [1014357, 1451713, 2294051, 307247], backgroundColor: ['#ef4444','#f97316','#22c55e','#94a3b8'], borderWidth: 2 }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } },
+      title: { display: true, text: 'สัดส่วนรายได้ตาม Segment (2026)', font: { size: 12 } }
+    }
+  }
+});
+
+// Salesperson chart
+new Chart(document.getElementById('salChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ทีปพิพัฒน์','ดุจชญา','อ้อยใจ','พรชิตาวรรณ','คุณเล็ก','NT อุ้ม','ฟิล์ม'],
+    datasets: [
+      { label: '2568', data: [1601706,1262464,812388,845358,532715,498787,157386], backgroundColor: '#c4b5fd', borderRadius: 4 },
+      { label: '2569', data: [1333818,1007228,729848,684956,335205,342457,270058], backgroundColor: '#7c3aed', borderRadius: 4 }
+    ]
+  },
+  options: {
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { ticks: { callback: v => (v/1000)+'k' } }, x: { ticks: { font: { size: 10 } } } }
+  }
+});
+</script>
+</body>
+</html>
