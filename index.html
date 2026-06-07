@@ -88,8 +88,8 @@
       --light-gray:  #EEEEEA;
       --mid-gray:    #DDDDD8;
       --text-dark:   #111111;
-      --text-mid:    #555550;
-      --text-light:  #999990;
+      --text-mid:   #44443F;
+      --text-light: #767670;
       --dark-bg:     #111111;
       /* card color strips */
       --amber:    #FF9C31; --forest:  #2A6040; --red:      #E04030;
@@ -108,7 +108,7 @@
       font-family: 'LINESeedSansTH', sans-serif;
       background-color: var(--white);
       color: var(--text-dark);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
@@ -559,9 +559,9 @@
 
     .card-number {
       font-family: 'LINESeedSansTH', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-light);
       margin-bottom: 6px;
@@ -580,7 +580,7 @@
 
     .card-th {
       font-family: 'LINESeedSansTH', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-mid);
       margin-bottom: 12px;
@@ -588,7 +588,7 @@
 
     .card-tagline {
       font-family: 'KitSans', 'LINESeedSansTH', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-style: italic;
       color: var(--orange);
       margin-bottom: 16px;
@@ -599,12 +599,34 @@
 
     .fruit-tag {
       font-family: 'LINESeedSansTH', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
+      font-size: 0.82rem;
+      font-weight: 500;
       background: var(--light-gray);
       color: var(--text-mid);
       padding: 4px 10px;
       border-radius: 6px;
+    }
+
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .card-head .card-name { margin-bottom: 0; }
+    .card-price {
+      font-family: 'Gelica', 'LINESeedSansTH', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--white);
+      background: var(--green);
+      padding: 5px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      line-height: 1.15;
+      box-shadow: 0 2px 6px rgba(109,188,116,0.35);
     }
 
     /* ─── CARD IMAGE ─── */
@@ -968,7 +990,7 @@
   <section class="hero" aria-label="Hero section">
     <div class="hero-inner">
       <div class="hero-content">
-          <div class="hero-badge">🌿 Cold-Press · Smoothies · No Sugar Added</div>
+          <div class="hero-badge">🌿 Cold-Pressed · Smoothies · No Sugar Added</div>
         <h1>Better Day<br><em>Starts Here.</em></h1>
         <p class="hero-sub">วันที่ดีกว่า เริ่มจากแก้วนี้</p>
         <p class="hero-desc">
@@ -1100,7 +1122,7 @@
         <div class="card-color-strip amber" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#01 · Cold-pressed</div>
-          <h3 class="card-name">RISE UP</h3>
+          <div class="card-head"><h3 class="card-name">RISE UP</h3><span class="card-price">98.-</span></div>
           <p class="card-th">วันนี้ดีขึ้น เริ่มจากแก้วนี้</p>
           <p class="card-tagline">"The day's better when you start it right."</p>
           <div class="card-fruits">
@@ -1120,7 +1142,7 @@
         <div class="card-color-strip forest" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#02 · Cold-pressed</div>
-          <h3 class="card-name">CLEAN SLATE</h3>
+          <div class="card-head"><h3 class="card-name">CLEAN SLATE</h3><span class="card-price">98.-</span></div>
           <p class="card-th">ปล่อยทิ้งสิ่งเก่า เริ่มต้นใหม่</p>
           <p class="card-tagline">"Let go of yesterday. Start fresh."</p>
           <div class="card-fruits">
@@ -1139,7 +1161,7 @@
         <div class="card-color-strip orange" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#03 · Cold-pressed</div>
-          <h3 class="card-name">GOOD VIBES</h3>
+          <div class="card-head"><h3 class="card-name">GOOD VIBES</h3><span class="card-price">98.-</span></div>
           <p class="card-th">แค่ดื่มนี้ วันนี้ก็ดีแล้ว</p>
           <p class="card-tagline">"Vitamin C for your soul."</p>
           <div class="card-fruits">
@@ -1159,7 +1181,7 @@
         <div class="card-color-strip red" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#04 · Cold-pressed</div>
-          <h3 class="card-name">ESCAPE</h3>
+          <div class="card-head"><h3 class="card-name">ESCAPE</h3><span class="card-price">88.-</span></div>
           <p class="card-th">พักใจ เหมือนได้พักร้อน</p>
           <p class="card-tagline">"Your 5-minute tropical vacation."</p>
           <div class="card-fruits">
@@ -1178,7 +1200,7 @@
         <div class="card-color-strip burgundy" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#05 · Cold-pressed</div>
-          <h3 class="card-name">POWER SURGE</h3>
+          <div class="card-head"><h3 class="card-name">POWER SURGE</h3><span class="card-price">98.-</span></div>
           <p class="card-th">แข็งแกร่งกว่าเมื่อวาน</p>
           <p class="card-tagline">"Strong body, stronger you."</p>
           <div class="card-fruits">
@@ -1197,7 +1219,7 @@
         <div class="card-color-strip dark-green" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#06 · Cold-pressed</div>
-          <h3 class="card-name">THINK SHARP</h3>
+          <div class="card-head"><h3 class="card-name">THINK SHARP</h3><span class="card-price">88.-</span></div>
           <p class="card-th">สมองใส คิดชัด ทำได้</p>
           <p class="card-tagline">"Clear mind. Clear path."</p>
           <div class="card-fruits">
@@ -1216,7 +1238,7 @@
         <div class="card-color-strip mint" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#07 · Cold-pressed</div>
-          <h3 class="card-name">FRESH RESET</h3>
+          <div class="card-head"><h3 class="card-name">FRESH RESET</h3><span class="card-price">98.-</span></div>
           <p class="card-th">รีเซ็ตใหม่ สดใสอีกครั้ง</p>
           <p class="card-tagline">"Because you deserve to feel new again."</p>
           <div class="card-fruits">
@@ -1235,7 +1257,7 @@
         <div class="card-color-strip olive" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#08 · Cold-pressed</div>
-          <h3 class="card-name">PURE JOY</h3>
+          <div class="card-head"><h3 class="card-name">PURE JOY</h3><span class="card-price">88.-</span></div>
           <p class="card-th">ความสุขง่ายๆ อยู่ตรงนี้</p>
           <p class="card-tagline">"Simple is the new beautiful."</p>
           <div class="card-fruits">
@@ -1254,7 +1276,7 @@
         <div class="card-color-strip emerald" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#09 · Cold-pressed</div>
-          <h3 class="card-name">GLOW UP</h3>
+          <div class="card-head"><h3 class="card-name">GLOW UP</h3><span class="card-price">98.-</span></div>
           <p class="card-th">สวยจากข้างใน ส่องออกข้างนอก</p>
           <p class="card-tagline">"Nourish your glow from within."</p>
           <div class="card-fruits">
@@ -1273,7 +1295,7 @@
         <div class="card-color-strip ruby" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#10 · Cold-pressed</div>
-          <h3 class="card-name">FEEL ALIVE</h3>
+          <div class="card-head"><h3 class="card-name">FEEL ALIVE</h3><span class="card-price">138.-</span></div>
           <p class="card-th">ตื่นมีชีวิต รู้สึกได้ทุกวัน</p>
           <p class="card-tagline">"Antioxidants that love you back."</p>
           <div class="card-fruits">
@@ -1340,7 +1362,7 @@
 <div class="card-color-strip pink" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#11 · Smoothie</div>
-          <h3 class="card-name">I FEEL GOOD</h3>
+          <div class="card-head"><h3 class="card-name">I FEEL GOOD</h3><span class="card-price">88.-</span></div>
           <p class="card-th">อิ่ม อร่อย มีความสุข</p>
           <p class="card-tagline">"This is what joy tastes like."</p>
           <div class="card-fruits">
@@ -1358,7 +1380,7 @@
 <div class="card-color-strip rose" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#12 · Smoothie</div>
-          <h3 class="card-name">IN FULL BLOOM</h3>
+          <div class="card-head"><h3 class="card-name">IN FULL BLOOM</h3><span class="card-price">108.-</span></div>
           <p class="card-th">กำลังสวยขึ้น ทุกเซลล์</p>
           <p class="card-tagline">"You're blooming — quietly."</p>
           <div class="card-fruits">
@@ -1376,7 +1398,7 @@
 <div class="card-color-strip lavender" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#13 · Smoothie</div>
-          <h3 class="card-name">YOU DESERVE THIS</h3>
+          <div class="card-head"><h3 class="card-name">YOU DESERVE THIS</h3><span class="card-price">118.-</span></div>
           <p class="card-th">คุณทำได้แล้ว คุณคู่ควร</p>
           <p class="card-tagline">"Treat yourself — you've earned it."</p>
           <div class="card-fruits">
@@ -1394,7 +1416,7 @@
 <div class="card-color-strip purple" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#14 · Smoothie</div>
-          <h3 class="card-name">RIDE HIGH</h3>
+          <div class="card-head"><h3 class="card-name">RIDE HIGH</h3><span class="card-price">118.-</span></div>
           <p class="card-th">พลังบวก ท่วมท้น</p>
           <p class="card-tagline">"Electric energy. Unstoppable mood."</p>
           <div class="card-fruits">
@@ -1412,7 +1434,7 @@
 <div class="card-color-strip tropical" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#15 · Smoothie</div>
-          <h3 class="card-name">AT MY BEST</h3>
+          <div class="card-head"><h3 class="card-name">AT MY BEST</h3><span class="card-price">128.-</span></div>
           <p class="card-th">วันนี้ฉันอยู่ในฟอร์มดีที่สุด</p>
           <p class="card-tagline">"Peak performance — inside out."</p>
           <div class="card-fruits">
@@ -1430,7 +1452,7 @@
         <div class="card-color-strip sky" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#16 · Smoothie</div>
-          <h3 class="card-name">FLOW STATE</h3>
+          <div class="card-head"><h3 class="card-name">FLOW STATE</h3><span class="card-price">108.-</span></div>
           <p class="card-th">โฟกัส ลื่นไหล ไม่มีสะดุด</p>
           <p class="card-tagline">"In the zone. Stay there."</p>
           <div class="card-fruits">
@@ -1449,7 +1471,7 @@
 <div class="card-color-strip amber" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#17 · Smoothie</div>
-          <h3 class="card-name">STAY SUNNY</h3>
+          <div class="card-head"><h3 class="card-name">STAY SUNNY</h3><span class="card-price">98.-</span></div>
           <p class="card-th">วันนี้แดดออก แม้ฟ้าครึ้ม</p>
           <p class="card-tagline">"Sunshine — in a cup."</p>
           <div class="card-fruits">
@@ -1467,7 +1489,7 @@
         <div class="card-color-strip mint" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#18 · Smoothie</div>
-          <h3 class="card-name">LIGHT & BRIGHT</h3>
+          <div class="card-head"><h3 class="card-name">LIGHT & BRIGHT</h3><span class="card-price">98.-</span></div>
           <p class="card-th">เบา สด ใส ไม่มีความหนัก</p>
           <p class="card-tagline">"Clean body. Clear mind."</p>
           <div class="card-fruits">
@@ -1485,7 +1507,7 @@
 <div class="card-color-strip berry" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#19 · Smoothie</div>
-          <h3 class="card-name">GROW STRONG</h3>
+          <div class="card-head"><h3 class="card-name">GROW STRONG</h3><span class="card-price">108.-</span></div>
           <p class="card-th">แข็งแกร่งขึ้นทุกวัน ไม่หยุด</p>
           <p class="card-tagline">"Every rep. Every sip. Counts."</p>
           <div class="card-fruits">
@@ -1503,7 +1525,7 @@
 <div class="card-color-strip teal" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#20 · Smoothie</div>
-          <h3 class="card-name">ISLAND MODE</h3>
+          <div class="card-head"><h3 class="card-name">ISLAND MODE</h3><span class="card-price">98.-</span></div>
           <p class="card-th">ปิดโหมดเครียด เปิดโหมดพัก</p>
           <p class="card-tagline">"Somewhere warm. Somewhere free."</p>
           <div class="card-fruits">
@@ -1521,7 +1543,7 @@
 <div class="card-color-strip coral" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#21 · Smoothie</div>
-          <h3 class="card-name">FIRED UP</h3>
+          <div class="card-head"><h3 class="card-name">FIRED UP</h3><span class="card-price">98.-</span></div>
           <p class="card-th">ไฟติด พร้อมลุยแล้ว</p>
           <p class="card-tagline">"Ready. Set. Go."</p>
           <div class="card-fruits">
@@ -1539,7 +1561,7 @@
 <div class="card-color-strip cacao" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#22 · Smoothie</div>
-          <h3 class="card-name">SWEET LIFE</h3>
+          <div class="card-head"><h3 class="card-name">SWEET LIFE</h3><span class="card-price">108.-</span></div>
           <p class="card-th">ชีวิตดี อร่อยด้วย</p>
           <p class="card-tagline">"Life is good — taste it."</p>
           <div class="card-fruits">
@@ -1558,7 +1580,7 @@
 <div class="card-color-strip cool" aria-hidden="true"></div>
         <div class="card-body">
           <div class="card-number">#23 · Smoothie</div>
-          <h3 class="card-name">COOL WAVE</h3>
+          <div class="card-head"><h3 class="card-name">COOL WAVE</h3><span class="card-price">98.-</span></div>
           <p class="card-th">หายใจออก เบาแล้ว เย็นแล้ว</p>
           <p class="card-tagline">"Breathe out. Cool down. Relax."</p>
           <div class="card-fruits">
