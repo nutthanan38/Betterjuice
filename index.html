@@ -632,21 +632,32 @@
 
     .menu-group-head {
       grid-column: 1 / -1;
-      display: flex; align-items: center; gap: 14px;
-      margin: 26px 0 2px;
-    }
-    .menu-group-head::before, .menu-group-head::after {
-      content: ""; flex: 1; height: 1px; background: var(--mid-gray);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 4px; margin: 38px 0 14px; padding: 18px 24px;
+      border-radius: 18px;
+      background: var(--green-light);
+      border: 1.5px solid rgba(109,188,116,0.4);
     }
     .menu-group-head .mg-en {
       font-family: 'Gelica', 'LINESeedSansTH', sans-serif;
-      font-weight: 700; font-size: 1.7rem; color: var(--green);
-      letter-spacing: 0.01em; white-space: nowrap;
+      font-weight: 700; font-size: 1.9rem; color: var(--forest);
+      letter-spacing: 0.01em; line-height: 1.1;
     }
+    .menu-group-head .mg-th {
+      font-family: 'LINESeedSansTH', sans-serif;
+      font-weight: 700; font-size: 0.98rem; color: var(--green);
+    }
+    /* per-group accents */
+    .menu-group-head.g2 { background: #FFF1E0; border-color: rgba(255,156,49,0.45); }
+    .menu-group-head.g2 .mg-en { color: var(--orange-dark); }
+    .menu-group-head.g2 .mg-th { color: var(--orange-dark); }
+    .menu-group-head.g3 { background: #F1ECFA; border-color: rgba(138,96,200,0.4); }
+    .menu-group-head.g3 .mg-en { color: var(--purple); }
+    .menu-group-head.g3 .mg-th { color: var(--purple); }
     .card-benefit {
       font-family: 'LINESeedSansTH', sans-serif;
-      font-size: 0.84rem; font-weight: 700; color: var(--green);
-      margin-top: 10px; line-height: 1.4;
+      font-size: 1rem; font-weight: 700; color: var(--green);
+      margin-top: 12px; line-height: 1.5;
     }
 
     /* ─── CARD IMAGE ─── */
@@ -1386,7 +1397,7 @@
 
     <div class="menu-grid" role="list">
 
-      <div class="menu-group-head" role="presentation"><span class="mg-en">Feel Good Blend</span></div>
+      <div class="menu-group-head g1" role="presentation"><span class="mg-en">😊 Feel Good Blend</span><span class="mg-th">ดื่มแล้วอารมณ์ดี สดชื่นจากภายใน</span></div>
 
       <article class="menu-card reveal" role="listitem" aria-label="Menu: I Feel Good">
               <div class="card-image">
@@ -1465,7 +1476,7 @@
         </div>
       </article>
 
-      <div class="menu-group-head" role="presentation"><span class="mg-en">Refresh & Glow</span></div>
+      <div class="menu-group-head g2" role="presentation"><span class="mg-en">✨ Refresh &amp; Glow</span><span class="mg-th">สดใส ผิวสวย ฟื้นฟูร่างกาย</span></div>
 
       <article class="menu-card reveal" role="listitem" aria-label="Menu: At My Best">
               <div class="card-image">
@@ -1562,7 +1573,7 @@
         </div>
       </article>
 
-      <div class="menu-group-head" role="presentation"><span class="mg-en">Energy Boost</span></div>
+      <div class="menu-group-head g3" role="presentation"><span class="mg-en">⚡ Energy Boost</span><span class="mg-th">เติมพลัง ฟื้นกล้ามเนื้อ พร้อมลุย</span></div>
 
       <article class="menu-card reveal" role="listitem" aria-label="Menu: You Deserve This">
               <div class="card-image">
